@@ -1,0 +1,35 @@
+[workspace]
+
+[package]
+name = "wireless-button"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "wireless-button"
+path = "src/main.rs"
+harness = false
+
+[profile.dev]
+opt-level = "s"
+
+[profile.release]
+codegen-units = 1
+debug = 2
+debug-assertions = false
+incremental = false
+lto = "fat"
+opt-level = "s"
+overflow-checks = false
+
+[dependencies]
+anyhow = "1"
+embedded-graphics = "0.8"
+embedded-hal = "1"
+esp-idf-svc = { version = "0.51", features = ["binstart"] }
+esp32-nimble = "0.11.1"
+log = "0.4"
+mipidsi = "0.10"
+
+[build-dependencies]
+embuild = { version = "0.33", features = ["espidf"] }

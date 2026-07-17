@@ -1,0 +1,14 @@
+[target.xtensa-esp32-espidf]
+linker = "ldproxy"
+rustflags = ["--cfg", "espidf_time64"]
+runner = "espflash flash --monitor"
+
+[build]
+target = "xtensa-esp32-espidf"
+
+[unstable]
+build-std = ["std", "panic_abort"]
+
+[env]
+ESP_LOG = "info"
+ESP_IDF_VERSION = "v5.3.3"
